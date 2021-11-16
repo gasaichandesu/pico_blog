@@ -1,0 +1,17 @@
+{% extends "index.twig" %}
+{% block content %}
+	{% for page in pages|sort_by("time")|reverse %}
+		{% if page.id starts with "blog/" and not page.hidden %}
+			<div class="post">
+				<h3>
+					<a href="{{ page.url }}">{{ page.title }}</a>
+				</h3>
+				{% for tag in page.tags %}
+					<span>{{ tag }}</span>
+				{% endfor %}
+				<p class="date">{{ page.date_formatted }}</p>
+				<p class="excerpt">{{ page.description }}</p>
+			</div>
+		{% endif %}
+	{% endfor %}
+{% endblock %}
