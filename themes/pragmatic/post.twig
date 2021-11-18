@@ -1,5 +1,10 @@
 {% extends "index.twig" %}
 {% block content %}
 	<h1>{{ current_page.title }}</h1>
+	<div>
+		{% for tag in current_page.meta.tags %}
+			{% include 'components/tag_link.twig' with { 'tag': tag } %}
+		{% endfor %}
+	</div>
 	{{ content }}
 {% endblock %}

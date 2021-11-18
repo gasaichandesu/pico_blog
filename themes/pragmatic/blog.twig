@@ -1,17 +1,31 @@
 {% extends "index.twig" %}
+
+{% set tag = url_param('tag', 'string') %}
+{% set tags = get_all_tags() %}
+{% set search_term = url_param('q', 'string') %}
+
 {% block content %}
-	{% for page in pages|sort_by("time")|reverse %}
+	{% include 'components/search_form.twig' %}
+
+	<ul>
+		{% for tag in tags|sort %}
+			<li>
+				{% include 'components/tag_link.twig' with { 'tag': tag } %}
+			</li>
+		{% endfor %}
+	</ul>
+	{% for page in pages|apply_tag_filter|apply_search|sort_by("time")|reverse %}
 		{% if page.id starts with "blog/" and not page.hidden %}
 			<div class="post">
 				<h3>
 					<a href="{{ page.url }}">{{ page.title }}</a>
 				</h3>
-				{% for tag in page.tags %}
-					<span>{{ tag }}</span>
-				{% endfor %}
 				<p class="date">{{ page.date_formatted }}</p>
-				<p class="excerpt">{{ page.description }}</p>
 			</div>
 		{% endif %}
 	{% endfor %}
+{% endblock %}
+
+{% block scripts %}
+	<script src="{{ theme_url }}/js/blog.js"></script>
 {% endblock %}

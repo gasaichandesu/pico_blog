@@ -8,3 +8,8 @@ Tags:
     - tech
     - productivity
 ---
+
+
+| Hotkey | Action |
+| ------- | ------ |
+| `:wq` | Exit Vim|

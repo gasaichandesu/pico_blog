@@ -249,7 +249,7 @@ abbr { text-decoration: underline dotted; }
 
 /*** TABLES ***/
 
-table { border-spacing: 0; }
+table { border-spacing: 0; width: 100%; }
 
 td, th {
     padding: 0.4em 1em;

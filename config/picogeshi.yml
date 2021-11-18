@@ -1,0 +1,76 @@
+# variables commented out with a single #hash represent default values.
+#
+# Since PicoGeSHi has no dependencies PicoCMS will enable it by default.
+# You can disable it by setting this to false:
+#
+PicoGeSHi.enabled: true
+geshi:
+
+    # class to use for code blocks with language definitions (additionally, the
+    # "language-$lang" class is preserved, and the "$lang" class is added)
+    # If you change this you also need to change the css_template, if you want
+    # colors applied.
+    class: "geshi"
+
+    # Enable _plain_ line-numbering ?
+    # Please note that this value and the next are independent of each other
+    # - in other words: it is enough and recommended to enable only one
+    # true | false
+    line-numbers: false
+    # Alternate styling for lines every (fancy-line-numbers) row
+    # must be greater than 1 to be applied
+    fancy-line-numbers: 0
+    # start numbering at (default: 0)
+    line-start: 0
+    # enable chapter id for each line - this does not turn line numbers into links.
+    enable-ids: false
+
+    # template to activate this plugin for. Pass "all" to activate for all pages
+    # (nevertheless, GeSHi is only initialized when a code block with a language
+    # definition is found)
+    template: "post"
+    # load this css color template (below colors will be inserted):
+    # path is relative to the PicoGeSHi dir, where PicoGeSHi.php resides
+    css_template: "default.template.css"
+
+# If you want the plugin to provide colors, you need to set the following to true.
+# The plugin will still add the appropriate classes if you explicitely set it to
+# false; that way one could apply separate CSS rules by some other means.
+# This setting defaults to true however, and if no colors are set the plugin
+# _will_ provide colors, defaulting to the following fallbacks.
+#
+geshi_col:
+   enabled: true
+
+# To avoid incompatibilities between dark and light themes, white and black  do
+# not exist, instead there's two foreground colors and two background colors.
+# The other colors are named analogously to e.g. terminal color schemes.
+#
+# Ideally, these are defined in your PicoCMS theme's (colors-...) YAML config
+# and not here. Use any color format that twig can read and CSS understands.
+# If you set geshi_col.enabled to true (it defaults to true) but don't define
+# any colors, the below fallbacks are used, with a light (dark text on light
+# background) theme in mind (see www.w3schools.com/cssref/css_colors.asp):
+#
+   fg_def: Black # default text
+   fg_alt: DimGrey # alternative text
+   bg_def: Mocassin # default background
+   bg_alt: OldLace # default background
+   ##  red dark/light
+   col1: DarkRed
+   col9: FireBrick
+   ##  green dark/light
+   col2: ForestGreen
+   col10: LawnGreen
+   ##  yellow dark/light
+   col3: GoldenRod
+   col11: Gold
+   ##  blue dark/light
+   col4: CadetBlue
+   col12: CornflowerBlue
+   ##  magenta dark/light
+   col5: DarkViolet
+   col13: DarkOrchid
+   ##  cyan dark/light
+   col6: DarkCyan
+   col14: DeepSkyBlue
